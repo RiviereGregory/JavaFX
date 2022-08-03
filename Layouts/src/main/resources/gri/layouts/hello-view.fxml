@@ -1,18 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<GridPane alignment="CENTER" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml"
+<GridPane alignment="TOP_CENTER" hgap="10" vgap="10" xmlns:fx="http://javafx.com/fxml"
           fx:controller="gri.layouts.HelloController"
           gridLinesVisible="true"> <!--  Permet d'avoir les ligne visible pour les espaces entre les boutons-->
-    <columnConstraints>
-        <ColumnConstraints percentWidth="50.0"/>
-        <ColumnConstraints percentWidth="50.0"/>
-    </columnConstraints>
-    <Button text="Button One" GridPane.rowIndex="0" GridPane.columnIndex="0"/>
+    <padding>
+        <Insets top="10"/>
+    </padding>
+
+    <Button text="Button One" GridPane.rowIndex="0" GridPane.columnIndex="0"
+            GridPane.halignment="RIGHT"/>
     <Button text="Button Two" GridPane.rowIndex="0" GridPane.columnIndex="1"/>
     <Button text="Button Three" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
-    <Button text="Really Long Button Four more text more text more text more text more text more text "
-            GridPane.rowIndex="1" GridPane.columnIndex="1"/>
+    <Button text="Really Long Button Four " GridPane.rowIndex="3" GridPane.columnIndex="0"
+            GridPane.columnSpan="2"/>
     <Button text="Button Five" GridPane.rowIndex="2" GridPane.columnIndex="0"/>
 </GridPane>
