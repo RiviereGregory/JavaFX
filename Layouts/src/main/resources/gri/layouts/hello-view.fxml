@@ -10,8 +10,18 @@
     <top>
         <Label text="This label is in the top position" alignment="center"
                BorderPane.alignment="CENTER"
-            style="-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed"/>
+               style="-fx-border-color: blue; -fx-border-width: 3; -fx-border-style: dashed"/>
     </top>
+    <center>
+        <Label text="This label is in the center position and has really looooooooooooooooooooooooong text"
+               alignment="center"/>
+    </center>
+    <left>
+        <Label text="This label is in the left position" alignment="center"/>
+    </left>
+    <right>
+        <Label text="This label is in the right position" alignment="center"/>
+    </right>
     <bottom>
         <HBox spacing="10" alignment="TOP_RIGHT">
             <padding>
