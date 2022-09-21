@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <?import javafx.scene.control.*?>
-<?import javafx.scene.layout.FlowPane?>
-<FlowPane fx:controller="gri.layouts.HelloController"
-          xmlns:fx="http://javafx.com/fxml" orientation="VERTICAL">
+<?import javafx.scene.layout.TilePane?>
+<TilePane fx:controller="gri.layouts.HelloController"
+          xmlns:fx="http://javafx.com/fxml">
     <Button text="Button One"/>
     <Button text="Button Two"/>
     <Button text="Button Three"/>
@@ -13,4 +13,4 @@
     <Button text="Button Eight"/>
     <Button text="Button Nine"/>
     <Button text="Button Ten"/>
-</FlowPane>
+</TilePane>
