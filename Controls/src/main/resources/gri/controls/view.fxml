@@ -35,4 +35,5 @@
                  selected="true"/>
     <RadioButton GridPane.rowIndex="0" GridPane.columnIndex="4" text="Green" toggleGroup="$colorToggleGroup"/>
 
+    <CheckBox text="Subscribe to our newsletter" GridPane.rowIndex="3"/>
 </GridPane>
