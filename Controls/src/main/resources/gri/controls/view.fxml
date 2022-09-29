@@ -40,4 +40,9 @@
         <CheckBox text="Cat"/>
         <CheckBox text="Bird"/>
     </VBox>
+    <HBox GridPane.rowIndex="0" GridPane.columnIndex="6">
+        <ToggleButton text="Toggle Me"/>
+        <ToggleButton text="Hello"/>
+        <ToggleButton text="Good Bye"/>
+    </HBox>
 </GridPane>
