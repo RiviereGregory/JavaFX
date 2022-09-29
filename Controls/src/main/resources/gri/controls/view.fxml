@@ -35,6 +35,9 @@
                  selected="true"/>
     <RadioButton GridPane.rowIndex="0" GridPane.columnIndex="4" text="Green" toggleGroup="$colorToggleGroup"/>
 
-    <CheckBox text="Subscribe to our newsletter" GridPane.rowIndex="3" indeterminate="true"/>
-    <!-- indeterminate permet de mettre un tiret dans la case pour forcé le choix de l'utilisateur -->
+    <VBox GridPane.rowIndex="0" GridPane.columnIndex="5">
+        <CheckBox text="Dog"/>
+        <CheckBox text="Cat"/>
+        <CheckBox text="Bird"/>
+    </VBox>
 </GridPane>
