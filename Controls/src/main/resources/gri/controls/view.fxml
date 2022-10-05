@@ -66,5 +66,20 @@
             <String fx:value="This is Option 4"/>
         </value>
     </ComboBox>
+    <ChoiceBox GridPane.rowIndex="1" GridPane.columnIndex="4">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="cb 1"/>
+                <String fx:value="cb 2"/>
+                <String fx:value="cb 3"/>
+                <String fx:value="cb 4"/>
+                <String fx:value="cb 5"/>
+            </FXCollections>
+        </items>
+        <!-- value permet de selectionner une valeur par defaut-->
+        <value>
+            <String fx:value="cb 4"/>
+        </value>
+    </ChoiceBox>
 
 </GridPane>
