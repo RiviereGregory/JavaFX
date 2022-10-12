@@ -81,5 +81,7 @@
             <String fx:value="cb 4"/>
         </value>
     </ChoiceBox>
+    <Slider GridPane.rowIndex="2" GridPane.columnIndex="0" GridPane.columnSpan="4" min="0" max="100"
+            showTickLabels="true" showTickMarks="true" minorTickCount="4" snapToTicks="true"/>
 
 </GridPane>
