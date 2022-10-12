@@ -87,5 +87,6 @@
              editable="true" initialValue="50"/>
 
     <ColorPicker GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+    <DatePicker GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
 </GridPane>
