@@ -86,4 +86,6 @@
     <Spinner GridPane.rowIndex="2" GridPane.columnIndex="4" min="0" max="100"
              editable="true" initialValue="50"/>
 
+    <ColorPicker GridPane.rowIndex="3" GridPane.columnIndex="0"/>
+
 </GridPane>
