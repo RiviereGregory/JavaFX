@@ -89,9 +89,19 @@
     <ColorPicker GridPane.rowIndex="3" GridPane.columnIndex="0"/>
     <DatePicker GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
-    <TitledPane text="Titled Pane" GridPane.rowIndex="3" GridPane.columnIndex="2">
-        <Label text="Label in titled pane"/>
+    <Accordion GridPane.rowIndex="3" GridPane.columnIndex="2" GridPane.columnSpan="2" expandedPane="$tp3">
+        <panes>
+            <TitledPane text="Titled Pane">
+                <Label text="Label in titled pane"/>
+            </TitledPane>
+            <TitledPane text="Titled Pane2 ">
+                <Label text="Label 2 in titled pane"/>
+            </TitledPane>
+            <TitledPane fx:id="tp3" text="Titled Pane3">
+                <Label text="Label 3 in titled pane"/>
+            </TitledPane>
+        </panes>
+    </Accordion>
 
-    </TitledPane>
 
 </GridPane>
