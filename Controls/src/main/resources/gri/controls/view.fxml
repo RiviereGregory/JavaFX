@@ -89,4 +89,9 @@
     <ColorPicker GridPane.rowIndex="3" GridPane.columnIndex="0"/>
     <DatePicker GridPane.rowIndex="3" GridPane.columnIndex="1"/>
 
+    <TitledPane text="Titled Pane" GridPane.rowIndex="3" GridPane.columnIndex="2">
+        <Label text="Label in titled pane"/>
+
+    </TitledPane>
+
 </GridPane>
