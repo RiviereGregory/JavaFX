@@ -9,7 +9,8 @@
 <?import java.lang.*?>
 <GridPane alignment="CENTER" xmlns:fx="http://javafx.com/fxml"
           fx:controller="gri.controls.Controller" hgap="10" vgap="10">
-    <Button GridPane.rowIndex="0" GridPane.columnIndex="0" text="Click me" onAction="#onButtonClick">
+    <Button fx:id="clickMeButton" GridPane.rowIndex="0" GridPane.columnIndex="0" text="Click me"
+            onAction="#onButtonClick">
         <graphic>
             <ImageView>
                 <Image url="@/toolbarButtonGraphics/general/TipOfTheDay24.gif"/>
@@ -103,6 +104,7 @@
         </panes>
     </Accordion>
 
-    <TextField GridPane.rowIndex="4" GridPane.columnIndex="0" fx:id="namedField"/>
+    <TextField GridPane.rowIndex="4" GridPane.columnIndex="0" fx:id="namedField" onKeyReleased="#handleKeyReleased"/>
+    <Button fx:id="byeButton" GridPane.rowIndex="5" GridPane.columnIndex="0" text="Say Bye" onAction="#onButtonClick"/>
 
 </GridPane>
