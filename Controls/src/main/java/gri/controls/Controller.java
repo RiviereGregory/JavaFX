@@ -3,6 +3,7 @@ package gri.controls;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.CheckBox;
 import javafx.scene.control.TextField;
 
 public class Controller {
@@ -12,6 +13,8 @@ public class Controller {
     private Button clickMeButton;
     @FXML
     private Button byeButton;
+    @FXML
+    private CheckBox ourCheckBox;
 
     @FXML
     public void initialize() {
@@ -26,6 +29,11 @@ public class Controller {
         } else if (actionEvent.getSource().equals(byeButton)) {
             System.out.println("Bye, " + namedField.getText());
         }
+
+        if (ourCheckBox.isSelected()) {
+            namedField.clear();
+            initialize();
+        }
     }
 
     @FXML
@@ -34,5 +42,10 @@ public class Controller {
         boolean disableButtons = text.isEmpty() || text.trim().isEmpty();
         clickMeButton.setDisable(disableButtons);
         byeButton.setDisable(disableButtons);
+    }
+
+    @FXML
+    public void handleChange() {
+        System.out.println("The checkbox is " + (ourCheckBox.isSelected() ? "checked" : "not checked"));
     }
 }
