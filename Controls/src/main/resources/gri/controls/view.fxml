@@ -103,5 +103,6 @@
         </panes>
     </Accordion>
 
+    <TextField GridPane.rowIndex="4" GridPane.columnIndex="0" fx:id="namedField"/>
 
 </GridPane>
