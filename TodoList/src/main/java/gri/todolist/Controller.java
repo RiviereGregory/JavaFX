@@ -4,6 +4,7 @@ import gri.todolist.datamodel.TodoItem;
 import javafx.fxml.FXML;
 import javafx.scene.control.ListView;
 import javafx.scene.control.SelectionMode;
+import javafx.scene.control.TextArea;
 
 import java.time.LocalDate;
 import java.time.Month;
@@ -11,10 +12,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    private List<TodoItem> todoItems;
 
     @FXML
     private ListView<TodoItem> todoListView;
+
+    @FXML
+    private TextArea itemDetailsTextArea;
 
     public void initialize() {
         TodoItem item1 = new TodoItem("Mail birthday card", "Buy a 30th birthday card for John",
@@ -28,7 +31,7 @@ public class Controller {
         TodoItem item5 = new TodoItem("Pick up dry cleaning", "The clothes should be ready by Wednesday",
                 LocalDate.of(2022, Month.OCTOBER, 30));
 
-        todoItems = new ArrayList<TodoItem>();
+        List<TodoItem> todoItems = new ArrayList<>();
         todoItems.add(item1);
         todoItems.add(item2);
         todoItems.add(item3);
@@ -37,5 +40,14 @@ public class Controller {
 
         todoListView.getItems().setAll(todoItems);
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
+    }
+
+    @FXML
+    public void handleClickListView() {
+        TodoItem item = todoListView.getSelectionModel().getSelectedItem();
+        String textDetailsView = item.getDetails() + "\n\n\n\n" +
+                "Due: " +
+                item.getDeadline().toString();
+        itemDetailsTextArea.setText(textDetailsView);
     }
 }
