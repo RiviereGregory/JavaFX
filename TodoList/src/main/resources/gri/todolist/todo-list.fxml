@@ -5,7 +5,7 @@
 <BorderPane xmlns:fx="http://javafx.com/fxml"
             fx:controller="gri.todolist.Controller">
     <left>
-        <ListView>
+        <ListView fx:id="todoListView">
 
         </ListView>
     </left>
