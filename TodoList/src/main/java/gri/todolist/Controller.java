@@ -9,6 +9,7 @@ import javafx.scene.control.TextArea;
 
 import java.time.LocalDate;
 import java.time.Month;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -46,7 +47,8 @@ public class Controller {
             if (newValue != null) {
                 TodoItem item = todoListView.getSelectionModel().getSelectedItem();
                 itemDetailsTextArea.setText(item.getDetails());
-                deadlineLabel.setText(item.getDeadline().toString());
+                DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("d MMMM yyyy");
+                deadlineLabel.setText(dateTimeFormatter.format(item.getDeadline()));
             }
         });
 
