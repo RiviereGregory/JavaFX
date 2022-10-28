@@ -42,14 +42,16 @@ public class Controller {
         todoItems.add(item4);
         todoItems.add(item5);
 
+        todoListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
+            if (newValue != null) {
+                TodoItem item = todoListView.getSelectionModel().getSelectedItem();
+                itemDetailsTextArea.setText(item.getDetails());
+                deadlineLabel.setText(item.getDeadline().toString());
+            }
+        });
+
         todoListView.getItems().setAll(todoItems);
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
-    }
-
-    @FXML
-    public void handleClickListView() {
-        TodoItem item = todoListView.getSelectionModel().getSelectedItem();
-        itemDetailsTextArea.setText(item.getDetails());
-        deadlineLabel.setText(item.getDeadline().toString());
+        todoListView.getSelectionModel().selectFirst();
     }
 }
