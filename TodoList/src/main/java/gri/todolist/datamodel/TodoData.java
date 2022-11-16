@@ -11,11 +11,16 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class TodoData {
+    private static final Logger LOGGER = Logger.getLogger(Logger.GLOBAL_LOGGER_NAME);
     private static TodoData instance = new TodoData();
     private static String filename = "TodoListItems.txt";
+
 
     private ObservableList<TodoItem> todoItems;
     private DateTimeFormatter formatter;
@@ -45,14 +50,21 @@ public class TodoData {
         try {
             while ((input = bufferedReader.readLine()) != null) {
                 String[] itemPieces = input.split(";");
-
+                if (itemPieces.length != 3) {
+                    LOGGER.log(Level.SEVERE, "split > 3");
+                    continue;
+                }
                 String shortDescription = itemPieces[0];
                 String details = itemPieces[1];
                 String dateString = itemPieces[2];
 
-                LocalDate date = LocalDate.parse(dateString, formatter);
-                TodoItem todoItem = new TodoItem(shortDescription, details, date);
-                todoItems.add(todoItem);
+                try {
+                    LocalDate date = LocalDate.parse(dateString, formatter);
+                    TodoItem todoItem = new TodoItem(shortDescription, details, date);
+                    todoItems.add(todoItem);
+                } catch (DateTimeParseException dateTimeParseException) {
+                    LOGGER.log(Level.SEVERE, "Ce n est pas une date", dateTimeParseException);
+                }
             }
         } finally {
             bufferedReader.close();

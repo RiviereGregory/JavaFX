@@ -6,8 +6,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.paint.Color;
 
 import java.io.IOException;
+import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.Optional;
 import java.util.logging.Level;
@@ -41,6 +43,23 @@ public class Controller {
         todoListView.setItems(TodoData.getInstance().getTodoItems());
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
+
+        todoListView.setCellFactory(callBack -> new ListCell<>() {
+            @Override
+            protected void updateItem(TodoItem item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setText(null);
+                } else {
+                    setText(item.getShortDescription());
+                    if (LocalDate.now().plusDays(1).isAfter(item.getDeadline())) {
+                        setTextFill(Color.RED);
+                    } else if (LocalDate.now().plusDays(1).equals(item.getDeadline())) {
+                        setTextFill(Color.BROWN);
+                    }
+                }
+            }
+        });
     }
 
     @FXML
