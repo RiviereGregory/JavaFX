@@ -4,3 +4,5 @@ Finish design proposal for client;I PROMISED MIKE I'D EMAIL WEBSITE MOCKUPS BY F
 Pickup Doug at the train station;DOUG'S ARRIVING ON MARCH 23 ON THE 5:00 TRAIN;23-12-2022
 Pick up dry cleaning;THE CLOTHES SHOULD BE READY BY WEDNESDAY;30-10-2022
 test ajout;ajout nouvelle item;09-11-2022
+My new description;Faire la description maintenant;17-11-2022
+test new item;selection de l'item crée;18-11-2022
