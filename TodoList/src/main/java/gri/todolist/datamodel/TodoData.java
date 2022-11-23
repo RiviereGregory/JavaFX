@@ -89,4 +89,8 @@ public class TodoData {
             bufferedWriter.close();
         }
     }
+
+    public void deleteTodoItem(TodoItem item) {
+        todoItems.remove(item);
+    }
 }

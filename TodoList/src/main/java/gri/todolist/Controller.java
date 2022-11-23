@@ -30,7 +30,18 @@ public class Controller {
     @FXML
     private BorderPane mainBorderPane;
 
+    @FXML
+    private ContextMenu listContextMenu;
+
     public void initialize() {
+        listContextMenu = new ContextMenu();
+        MenuItem deleteMenuItem = new MenuItem("Delete");
+        deleteMenuItem.setOnAction(actionEvent -> {
+            TodoItem item = todoListView.getSelectionModel().getSelectedItem();
+            deleteItem(item);
+        });
+
+        listContextMenu.getItems().addAll(deleteMenuItem);
         todoListView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldValue, newValue) -> {
             if (newValue != null) {
                 TodoItem item = todoListView.getSelectionModel().getSelectedItem();
@@ -44,21 +55,36 @@ public class Controller {
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
 
-        todoListView.setCellFactory(callBack -> new ListCell<>() {
-            @Override
-            protected void updateItem(TodoItem item, boolean empty) {
-                super.updateItem(item, empty);
-                if (empty) {
-                    setText(null);
-                } else {
-                    setText(item.getShortDescription());
-                    if (LocalDate.now().plusDays(1).isAfter(item.getDeadline())) {
-                        setTextFill(Color.RED);
-                    } else if (LocalDate.now().plusDays(1).equals(item.getDeadline())) {
-                        setTextFill(Color.BROWN);
+
+        todoListView.setCellFactory(callBack -> {
+            ListCell<TodoItem> cell = new ListCell<>() {
+                @Override
+                protected void updateItem(TodoItem item, boolean empty) {
+                    super.updateItem(item, empty);
+                    if (empty) {
+                        setText(null);
+                    } else {
+                        setText(item.getShortDescription());
+                        if (LocalDate.now().plusDays(1).isAfter(item.getDeadline())) {
+                            setTextFill(Color.RED);
+                        } else if (LocalDate.now().plusDays(1).equals(item.getDeadline())) {
+                            setTextFill(Color.BROWN);
+                        }
                     }
                 }
-            }
+            };
+
+            cell.emptyProperty().addListener(
+                    (obs, wasEmpty, isNowEmpty) -> {
+                        if (Boolean.TRUE.equals(isNowEmpty)) {
+                            cell.setContextMenu(null);
+                        } else {
+                            cell.setContextMenu(listContextMenu);
+                        }
+
+                    });
+
+            return cell;
         });
     }
 
@@ -87,6 +113,18 @@ public class Controller {
             LOGGER.log(Level.INFO, "OK pressed");
         } else {
             LOGGER.log(Level.INFO, "Cancel pressed");
+        }
+    }
+
+
+    private void deleteItem(TodoItem item) {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Todo item");
+        alert.setHeaderText("Delete item: " + item.getShortDescription());
+        alert.setContentText("Are you sure? Press OK to confirm, or cancel to Back out.");
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            TodoData.getInstance().deleteTodoItem(item);
         }
     }
 }
