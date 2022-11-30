@@ -5,6 +5,8 @@ import gri.todolist.datamodel.TodoItem;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.paint.Color;
 
@@ -116,6 +118,13 @@ public class Controller {
         }
     }
 
+    @FXML
+    public void handleKeyPressed(KeyEvent keyEvent) {
+        TodoItem selectedItem = todoListView.getSelectionModel().getSelectedItem();
+        if (selectedItem != null && KeyCode.DELETE.equals(keyEvent.getCode())) {
+            deleteItem(selectedItem);
+        }
+    }
 
     private void deleteItem(TodoItem item) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
