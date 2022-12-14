@@ -2,6 +2,7 @@ package gri.todolist;
 
 import gri.todolist.datamodel.TodoData;
 import gri.todolist.datamodel.TodoItem;
+import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.control.*;
@@ -53,7 +54,11 @@ public class Controller {
             }
         });
 
-        todoListView.setItems(TodoData.getInstance().getTodoItems());
+        SortedList<TodoItem> sortedList = new SortedList<>(TodoData.getInstance().getTodoItems(),
+                (o1, o2) -> o1.getDeadline().compareTo(o2.getDeadline())
+        );
+
+        todoListView.setItems(sortedList);
         todoListView.getSelectionModel().setSelectionMode(SelectionMode.SINGLE);
         todoListView.getSelectionModel().selectFirst();
 
