@@ -2,6 +2,7 @@ package gri.todolist;
 
 import gri.todolist.datamodel.TodoData;
 import gri.todolist.datamodel.TodoItem;
+import javafx.application.Platform;
 import javafx.collections.transformation.FilteredList;
 import javafx.collections.transformation.SortedList;
 import javafx.fxml.FXML;
@@ -158,6 +159,7 @@ public class Controller {
         }
     }
 
+    @FXML
     public void handleFilterButton() {
         TodoItem selectedItem = todoListView.getSelectionModel().getSelectedItem();
         if (filterToggleButton.isSelected()) {
@@ -176,5 +178,10 @@ public class Controller {
             todoListView.getSelectionModel().select(selectedItem);
             LOGGER.log(Level.INFO, "Toggle not pressed");
         }
+    }
+
+    @FXML
+    public void handleExit() {
+        Platform.exit();
     }
 }
