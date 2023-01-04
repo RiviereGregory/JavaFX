@@ -8,6 +8,7 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 
 import java.io.File;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -60,9 +61,13 @@ public class Controller {
 //        File file = chooser.showDialog(gridPane.getScene().getWindow());
 
         // Pour enregistrer un fichier
-        File file = chooser.showSaveDialog(gridPane.getScene().getWindow());
-        if (file != null) {
-            LOGGER.log(Level.INFO, "Chemin du repertoire: {0}", file.getPath());
+        //File file = chooser.showSaveDialog(gridPane.getScene().getWindow());
+        // Pour ouvrir plusieurs fichiers
+        List<File> files = chooser.showOpenMultipleDialog(gridPane.getScene().getWindow());
+        if (files != null) {
+            for (File file : files) {
+                LOGGER.log(Level.INFO, "Chemin du repertoire: {0}", file.getPath());
+            }
         } else {
             LOGGER.log(Level.INFO, "Chooser cancel");
         }
