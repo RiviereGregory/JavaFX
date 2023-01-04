@@ -7,7 +7,11 @@ import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
 import javafx.stage.FileChooser;
 
+import java.awt.*;
 import java.io.File;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -70,6 +74,18 @@ public class Controller {
             }
         } else {
             LOGGER.log(Level.INFO, "Chooser cancel");
+        }
+    }
+
+    @FXML
+    public void handleLinkClick() {
+        LOGGER.log(Level.INFO, "The link wait click");
+        try {
+            Desktop.getDesktop().browse(new URI("http://www.google.fr"));
+        } catch (IOException e) {
+            LOGGER.log(Level.SEVERE, "erreur IO", e);
+        } catch (URISyntaxException e) {
+            LOGGER.log(Level.SEVERE, "Erreur URI", e);
         }
     }
 }

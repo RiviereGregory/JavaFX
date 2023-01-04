@@ -14,4 +14,5 @@
     <RadioButton text="Choice 1" GridPane.rowIndex="1" GridPane.columnIndex="0"/>
     <Label text="JavaFx Effect" fx:id="label" GridPane.rowIndex="1" GridPane.columnIndex="1"
            onMouseEntered="#handleMouseEnter" onMouseExited="#handleMouseExit"/>
+    <Hyperlink text="www.javafx.com" GridPane.rowIndex="3" GridPane.columnIndex="0" onAction="#handleLinkClick"/>
 </GridPane>
