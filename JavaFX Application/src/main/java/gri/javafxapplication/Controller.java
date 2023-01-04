@@ -48,7 +48,9 @@ public class Controller {
         chooser.setTitle("Save Application File");
         chooser.getExtensionFilters().addAll(
                 new FileChooser.ExtensionFilter("Text", "*.txt"),
-                new FileChooser.ExtensionFilter("PDF", "*.pdf")
+                new FileChooser.ExtensionFilter("PDF", "*.pdf"),
+                new FileChooser.ExtensionFilter("Images Files", "*.jpg", "*.png", "*.gif"),
+                new FileChooser.ExtensionFilter("All Files", "*.*")
         );
 
         //Pour choisir un repertoire
