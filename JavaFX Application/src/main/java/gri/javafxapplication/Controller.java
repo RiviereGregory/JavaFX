@@ -5,7 +5,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.layout.GridPane;
-import javafx.stage.DirectoryChooser;
+import javafx.stage.FileChooser;
 
 import java.io.File;
 import java.util.logging.Level;
@@ -40,14 +40,25 @@ public class Controller {
 
     public void handleClick() {
         //Pour choisir un fichier
-//        FileChooser chooser = new FileChooser();
-//        // gridPane.getScene().getWindow() permet de ne pas ouvrir plusieur explorateur
+        FileChooser chooser = new FileChooser();
+        // gridPane.getScene().getWindow() permet de ne pas ouvrir plusieur explorateur
 //        chooser.showOpenDialog(gridPane.getScene().getWindow());
 
+        // limitation des choix de la boite de dialogue
+        chooser.setTitle("Save Application File");
+        chooser.getExtensionFilters().addAll(
+                new FileChooser.ExtensionFilter("Text", "*.txt"),
+                new FileChooser.ExtensionFilter("PDF", "*.pdf")
+        );
+
         //Pour choisir un repertoire
-        DirectoryChooser chooser = new DirectoryChooser();
+//        DirectoryChooser chooser = new DirectoryChooser();
         // gridPane.getScene().getWindow() permet de ne pas ouvrir plusieur explorateur
-        File file = chooser.showDialog(gridPane.getScene().getWindow());
+        //Pour ouvrir une boite de dialogue
+//        File file = chooser.showDialog(gridPane.getScene().getWindow());
+
+        // Pour enregistrer un fichier
+        File file = chooser.showSaveDialog(gridPane.getScene().getWindow());
         if (file != null) {
             LOGGER.log(Level.INFO, "Chemin du repertoire: {0}", file.getPath());
         } else {
